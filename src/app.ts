@@ -6,10 +6,9 @@ const bodyParser = require ('body-parser')
 
 
 
+
 const app = express()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(morgan('dev'));
+{/* 
 app.use((req:any, res:any, next:any) => {
     res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -17,9 +16,13 @@ app.use((req:any, res:any, next:any) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+*/}
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(morgan('dev'));
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.use(cors())
 app.use('/',router)
 
 export default app
